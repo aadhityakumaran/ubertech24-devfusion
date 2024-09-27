@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(routes);
+app.use('/api/v1', routes);
 
 app.use((req, res) => {
     res.status(404).json({ message: "Page not found" });
