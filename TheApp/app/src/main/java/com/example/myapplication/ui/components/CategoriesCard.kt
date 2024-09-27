@@ -18,7 +18,7 @@ import java.time.ZoneId
 
 
 @Composable
-fun EventCard (
+fun CategoriesCard (
     modifier: Modifier = Modifier,
     event : String,
     onclick: () -> Unit
