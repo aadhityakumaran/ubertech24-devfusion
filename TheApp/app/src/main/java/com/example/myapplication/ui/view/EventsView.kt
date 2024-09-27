@@ -15,6 +15,7 @@ import com.example.myapplication.viewmodel.EventsViewModel
 
 @Composable
 fun EventsView(
+    eventName: String,
     navController: NavController,
     viewModel: EventsViewModel = viewModel()
 ) {

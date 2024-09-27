@@ -1,4 +1,4 @@
-package com.example.myapplication.navigation
+    package com.example.myapplication.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
@@ -18,12 +18,13 @@ fun NavGraph (
             HomeView(navController)
         }
 
-        composable(Destinations.EventScreen.route) {
-            EventsView(navController)
+        composable(Destinations.EventScreen.route) { backStackEntry ->
+            val event = backStackEntry.arguments?.getString("event")
+            EventsView(event?: "", navController)
         }
 
         composable(Destinations.AddEventScreen.route) {
-            EventsView(navController)
+            HomeView(navController)
         }
     }
 }

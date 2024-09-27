@@ -2,7 +2,7 @@ package com.example.myapplication.data.repository
 
 import com.example.myapplication.data.model.Event
 
-class EventRepository {
+object EventRepository {
     private val apiService = RetrofitClient.instance
 
     fun getCategories(): List<String> {
