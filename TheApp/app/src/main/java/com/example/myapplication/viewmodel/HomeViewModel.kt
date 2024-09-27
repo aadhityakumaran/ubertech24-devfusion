@@ -2,7 +2,6 @@ package com.example.myapplication.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.data.model.Event
 import com.example.myapplication.data.repository.EventRepository
 import kotlinx.coroutines.launch
 
