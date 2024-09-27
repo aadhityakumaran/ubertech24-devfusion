@@ -1,6 +1,7 @@
 import mysql from 'mysql2';
-import config from './db_config';
-import crypto from 'crypto';
+import env from 'dotenv';
+
+env.config();
 
 const config = {
     host: process.env.DB_HOST || "localhost",
@@ -23,9 +24,15 @@ function connect() {
 }
 
 async function getCategories() {
-    const query = `SELECT DISTINCT Category FROM Activities'`;
+    const query = `SELECT DISTINCT Category FROM Activities`;
     const [rows, fields] = await connection.promise().query(query);
-    return rows;
+    
+    const arr = [];
+    rows.forEach((row) => {
+        arr.push(row.Category);
+    });
+    
+    return arr;
 }
 
 async function getEvents(category) {
@@ -39,9 +46,9 @@ async function joinEvent(id) {
     await connection.promise().query(query, [id]);
 }
 
-async function addEvent(category, activity, dateTime, location, numberOfPeople) {
+async function addEvent(category, activity, dateTime, location) {
     const query = `INSERT INTO Activities (Category, Activity, DateTime, Location, NumberOfPeople) VALUES (?, ?, ?, ?, ?)`;
-    await connection.promise().query(query, [category, activity, dateTime, location, numberOfPeople]);
+    await connection.promise().query(query, [category, activity, dateTime, location, 1]);
 }
 
 export { getCategories, getEvents, joinEvent, addEvent};
