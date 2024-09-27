@@ -5,6 +5,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.myapplication.ui.view.EventsView
+import com.example.myapplication.ui.view.HomeView
 
 @Composable
 fun NavGraph (
@@ -13,11 +15,15 @@ fun NavGraph (
     NavHost(navController = navController, startDestination = Destinations.HomeScreen.route){
 
         composable(Destinations.HomeScreen.route){
-
+            HomeView(navController)
         }
 
         composable(Destinations.EventScreen.route) {
+            EventsView(navController)
+        }
 
+        composable(Destinations.AddEventScreen.route) {
+            EventsView(navController)
         }
     }
 }
